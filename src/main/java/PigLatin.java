@@ -38,18 +38,21 @@ public class PigLatin {
   	return -1;
     }
 
-    public String pigLatin(String sWord) { 
+    public String pigLatin(String sWord){
 	//precondition: sWord is a valid String of length greater than 0
 	//postcondition: returns the pig latin equivalent of sWord
   	if(findFirstVowel(sWord) == -1){
     		return sWord + "ay";
   	} else if(findFirstVowel(sWord) == 0){
     		return sWord + "way";
-  	} else if(sWord.substring(0,2) == "qu"){
+  	} else if(sWord.substring(0,2).equals("qu") || sWord.substring(0,2).equals("Qu")){
     		return sWord.substring(2) + sWord.substring(0,2) + "ay";
+  	} else if(findFirstVowel(sWord) == 2){
+    		return sWord.substring(2) + sWord.substring(0,2) + "ay";
+  	} else if(findFirstVowel(sWord) == 3){
+    		return sWord.substring(3) + sWord.substring(0,3) + "ay";
   	} else {
     		return sWord.substring(1) + sWord.substring(0,1) + "ay";
   	}
-
-    }
+   }
 }//end PigLatin class
